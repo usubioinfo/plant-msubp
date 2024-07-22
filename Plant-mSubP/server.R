@@ -531,9 +531,11 @@ server <- function(input, output, session) {
 
   })
   
-  output$mytable = DT::renderDataTable({DT::datatable(
+  output$mytable = DT::renderDataTable({
+    req(in_data$data)
+    DT::datatable(
     in_data$data,
-    options = list(rowCallback = DT::JS(
+    options = list(deferRender = TRUE, rowCallback = DT::JS(
       'function(row, data) {
         // Bold cells for those >= 5 in the first column
         //if (parseFloat(data[1]) >= 5.0)
@@ -542,7 +544,7 @@ server <- function(input, output, session) {
       }'
     ))
     )
-  })
+  }, server = FALSE)
   
   output$downloadData <- downloadHandler(
     filename = function() {

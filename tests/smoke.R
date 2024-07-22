@@ -16,10 +16,15 @@ for (module in modules) {
     stopifnot(nrow(in_data$data) == 2L, ncol(in_data$data) == 16L,
               identical(as.character(in_data$data$Sequence_id), names(sequences)),
               all(!is.na(in_data$data$Prediction)))
+    widget <- jsonlite::fromJSON(output$mytable)
+    stopifnot(is.null(widget$x$options$ajax),
+              !isTRUE(widget$x$options$serverSide),
+              isTRUE(widget$x$options$deferRender),
+              ncol(widget$x$data) == nrow(in_data$data))
     session$setInputs(clearButton = 1)
     stopifnot(is.null(in_data$data))
   })
-  cat("PASS pasted FASTA and clear:", module, "\n")
+  cat("PASS pasted FASTA, table without Ajax, and clear:", module, "\n")
 }
 
 upload <- tempfile(fileext = ".fasta")

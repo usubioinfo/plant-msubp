@@ -78,6 +78,8 @@ Include `deploy/nginx-location.conf` inside the existing nginx `server` block, t
 
 Preserve `/Plant-mSubP/` when proxying: `proxy_pass` must have no trailing slash. The included configuration handles the canonical redirect, WebSocket connections, uploads, and long-running predictions.
 
+Results tables use browser-side sorting, searching, and pagination. Table data travel through the existing Shiny connection, avoiding separate DataTables POST requests that some ModSecurity rules reject. The full result table is sent to the browser; large submissions use more browser memory. Shiny's WebSocket/fallback connection must still work.
+
 ## Portable file paths
 
 App assets and model files use paths relative to `Plant-mSubP/`. Temporary query files use R's temporary directory. Historical R scripts should be run from `Plant-mSubP/`; they no longer refer to a user's home directory or an installed Shiny Server tree.
