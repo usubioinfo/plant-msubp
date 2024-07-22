@@ -1,0 +1,289 @@
+#!/usr/bin/env Rscript
+
+library('e1071')
+library('protr')
+source("scripts/sequence_to_feature.R")
+dir("training/sequences")
+
+Celmemb.training.sequence.set = readFASTA("training/sequences/Celmemb_train_filter.fasta")
+Celwall.training.sequence.set = readFASTA("training/sequences/Celwall_train_filter.fasta")
+Cyto.Golgi.training.sequence.set = readFASTA("training/sequences/Cyto_Golgi_train_filter.fasta")
+Cyto.Nucl.training.sequence.set = readFASTA("training/sequences/Cyto_Nucl_train_filter.fasta")
+Cyto.training.sequence.set = readFASTA("training/sequences/Cyto_train_filter.fasta")
+Endoplasm.training.sequence.set = readFASTA("training/sequences/Endoplasm_train_filter.fasta")
+Extracel.training.sequence.set = readFASTA("training/sequences/Extracel_train_filter.fasta")
+Golgi.training.sequence.set = readFASTA("training/sequences/Golgi_train_filter.fasta")
+Mito.Plastid.training.sequence.set = readFASTA("training/sequences/Mito_Plastid_train_filter.fasta")
+Mito.training.sequence.set = readFASTA("training/sequences/Mito_train_filter.fasta")
+Multi.SubCellClass.training.sequence.set = readFASTA("training/sequences/Multi_Class_train_filter.fasta")
+Nucl.training.sequence.set = readFASTA("training/sequences/Nucl_train_filter.fasta")
+Other.Dual.training.sequence.set = readFASTA("training/sequences/Other_Dual_train_filter.fasta")
+Peroxi.training.sequence.set = readFASTA("training/sequences/Peroxi_train_filter.fasta")
+Plastid.training.sequence.set = readFASTA("training/sequences/Plastid_train_filter.fasta")
+Vacu.training.sequence.set = readFASTA("training/sequences/Vacu_train_filter.fasta")
+
+Celmemb.training.set = data.frame()
+for(i in 1:length(Celmemb.training.sequence.set)){
+  Celmemb.training.set = rbind(Celmemb.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Celmemb.training.sequence.set[[i]]))
+}
+
+Celwall.training.set = data.frame()
+for(i in 1:length(Celwall.training.sequence.set)){
+  Celwall.training.set = rbind(Celwall.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Celwall.training.sequence.set[[i]]))
+}
+
+Cyto.Golgi.training.set = data.frame()
+for(i in 1:length(Cyto.Golgi.training.sequence.set)){
+  Cyto.Golgi.training.set = rbind(Cyto.Golgi.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.Golgi.training.sequence.set[[i]]))
+}
+
+Cyto.Nucl.training.set = data.frame()
+for(i in 1:length(Cyto.Nucl.training.sequence.set)){
+  Cyto.Nucl.training.set = rbind(Cyto.Nucl.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.Nucl.training.sequence.set[[i]]))
+}
+
+Cyto.training.set = data.frame()
+for(i in 1:length(Cyto.training.sequence.set)){
+  Cyto.training.set = rbind(Cyto.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.training.sequence.set[[i]]))
+}
+
+Endoplasm.training.set = data.frame()
+for(i in 1:length(Endoplasm.training.sequence.set)){
+  Endoplasm.training.set = rbind(Endoplasm.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Endoplasm.training.sequence.set[[i]]))
+}
+
+Extracel.training.set = data.frame()
+for(i in 1:length(Extracel.training.sequence.set)){
+  Extracel.training.set = rbind(Extracel.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Extracel.training.sequence.set[[i]]))
+}
+
+Golgi.training.set = data.frame()
+for(i in 1:length(Golgi.training.sequence.set)){
+  Golgi.training.set = rbind(Golgi.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Golgi.training.sequence.set[[i]]))
+}
+
+Mito.Plastid.training.set = data.frame()
+for(i in 1:length(Mito.Plastid.training.sequence.set)){
+  Mito.Plastid.training.set = rbind(Mito.Plastid.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Mito.Plastid.training.sequence.set[[i]]))
+}
+
+Mito.training.set = data.frame()
+for(i in 1:length(Mito.training.sequence.set)){
+  Mito.training.set = rbind(Mito.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Mito.training.sequence.set[[i]]))
+}
+
+Multi.SubCellClass.training.set = data.frame()
+for(i in 1:length(Multi.SubCellClass.training.sequence.set)){
+  Multi.SubCellClass.training.set = rbind(Multi.SubCellClass.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Multi.SubCellClass.training.sequence.set[[i]]))
+}
+
+Nucl.training.set = data.frame()
+for(i in 1:length(Nucl.training.sequence.set)){
+  Nucl.training.set = rbind(Nucl.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Nucl.training.sequence.set[[i]]))
+}
+
+Other.Dual.training.set = data.frame()
+for(i in 1:length(Other.Dual.training.sequence.set)){
+  Other.Dual.training.set = rbind(Other.Dual.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Other.Dual.training.sequence.set[[i]]))
+}
+
+Peroxi.training.set = data.frame()
+for(i in 1:length(Peroxi.training.sequence.set)){
+  Peroxi.training.set = rbind(Peroxi.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Peroxi.training.sequence.set[[i]]))
+}
+
+Plastid.training.set = data.frame()
+for(i in 1:length(Plastid.training.sequence.set)){
+  Plastid.training.set = rbind(Plastid.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Plastid.training.sequence.set[[i]]))
+}
+
+Vacu.training.set = data.frame()
+for(i in 1:length(Vacu.training.sequence.set)){
+  Vacu.training.set = rbind(Vacu.training.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Vacu.training.sequence.set[[i]]))
+}
+Celmemb.training.set$SubCellClass = "Celmemb"
+Celwall.training.set$SubCellClass = "Celwall"
+Cyto.Golgi.training.set$SubCellClass = "Cyto.Golgi"
+Cyto.Nucl.training.set$SubCellClass = "Cyto.Nucl"
+Cyto.training.set$SubCellClass = "Cyto"
+Endoplasm.training.set$SubCellClass = "Endoplasm"
+Extracel.training.set$SubCellClass = "Extracel"
+Golgi.training.set$SubCellClass = "Golgi"
+Mito.Plastid.training.set$SubCellClass = "Mito.Plastid"
+Mito.training.set$SubCellClass = "Mito"
+Multi.SubCellClass.training.set$SubCellClass = "Multi.SubCellClass"
+Nucl.training.set$SubCellClass = "Nucl"
+Other.Dual.training.set$SubCellClass = "Other.Dual"
+Peroxi.training.set$SubCellClass = "Peroxi"
+Plastid.training.set$SubCellClass = "Plastid"
+Vacu.training.set$SubCellClass = "Vacu"
+
+
+SubCellClasses = c("Celmemb", "Celwall", "Cyto.Golgi", "Cyto.Nucl","Cyto", "Endoplasm", "Extracel", "Golgi",
+                   "Mito.Plastid", "Mito", "Multi.SubCellClass", "Nucl", "Other.Dual", "Peroxi", "Plastid", "Vacu")
+
+Total.training.set = rbind(Celmemb.training.set, Celwall.training.set, Cyto.Golgi.training.set, Cyto.Nucl.training.set,
+                           Cyto.training.set, Endoplasm.training.set, Extracel.training.set, Golgi.training.set,
+                           Mito.Plastid.training.set, Mito.training.set, Multi.SubCellClass.training.set, Nucl.training.set,
+                           Other.Dual.training.set, Peroxi.training.set, Plastid.training.set, Vacu.training.set)
+
+#Total.training.set[is.na.data.frame(Total.training.set),]
+Training.set <- subset(Total.training.set, select=-SubCellClass)
+Class.labels <- Total.training.set$SubCellClass
+
+Celmemb.testing.sequence.set = readFASTA("testing/sequences/Celmemb_Inde.fasta")
+Celwall.testing.sequence.set = readFASTA("testing/sequences/Celwall_Inde.fasta")
+Cyto.Golgi.testing.sequence.set = readFASTA("testing/sequences/Cyto_Golgi_Inde.fasta")
+Cyto.Nucl.testing.sequence.set = readFASTA("testing/sequences/Cyto_Nucl_Inde.fasta")
+Cyto.testing.sequence.set = readFASTA("testing/sequences/Cyto_Inde.fasta")
+Endoplasm.testing.sequence.set = readFASTA("testing/sequences/Endoplasm_Inde.fasta")
+Extracel.testing.sequence.set = readFASTA("testing/sequences/Extracel_Inde.fasta")
+Golgi.testing.sequence.set = readFASTA("testing/sequences/Golgi_Inde.fasta")
+Mito.Plastid.testing.sequence.set = readFASTA("testing/sequences/Mito_Plastid_Inde.fasta")
+Mito.testing.sequence.set = readFASTA("testing/sequences/Mito_Inde.fasta")
+Multi.SubCellClass.testing.sequence.set = readFASTA("testing/sequences/Multi_Class_Inde.fasta")
+Nucl.testing.sequence.set = readFASTA("testing/sequences/Nucl_Inde.fasta")
+Other.Dual.testing.sequence.set = readFASTA("testing/sequences/Other_Dual_Inde.fasta")
+Peroxi.testing.sequence.set = readFASTA("testing/sequences/Peroxi_Inde.fasta")
+Plastid.testing.sequence.set = readFASTA("testing/sequences/Plastid_Inde.fasta")
+Vacu.testing.sequence.set = readFASTA("testing/sequences/Vacu_Inde.fasta")
+
+Celmemb.testing.set = data.frame()
+for(i in 1:length(Celmemb.testing.sequence.set)){
+  Celmemb.testing.set = rbind(Celmemb.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Celmemb.testing.sequence.set[[i]]))
+}
+
+Celwall.testing.set = data.frame()
+for(i in 1:length(Celwall.testing.sequence.set)){
+  Celwall.testing.set = rbind(Celwall.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Celwall.testing.sequence.set[[i]]))
+}
+
+Cyto.Golgi.testing.set = data.frame()
+for(i in 1:length(Cyto.Golgi.testing.sequence.set)){
+  Cyto.Golgi.testing.set = rbind(Cyto.Golgi.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.Golgi.testing.sequence.set[[i]]))
+}
+
+Cyto.Nucl.testing.set = data.frame()
+for(i in 1:length(Cyto.Nucl.testing.sequence.set)){
+  Cyto.Nucl.testing.set = rbind(Cyto.Nucl.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.Nucl.testing.sequence.set[[i]]))
+}
+
+Cyto.testing.set = data.frame()
+for(i in 1:length(Cyto.testing.sequence.set)){
+  Cyto.testing.set = rbind(Cyto.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Cyto.testing.sequence.set[[i]]))
+}
+
+Endoplasm.testing.set = data.frame()
+for(i in 1:length(Endoplasm.testing.sequence.set)){
+  Endoplasm.testing.set = rbind(Endoplasm.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Endoplasm.testing.sequence.set[[i]]))
+}
+
+Extracel.testing.set = data.frame()
+for(i in 1:length(Extracel.testing.sequence.set)){
+  Extracel.testing.set = rbind(Extracel.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Extracel.testing.sequence.set[[i]]))
+}
+
+Golgi.testing.set = data.frame()
+for(i in 1:length(Golgi.testing.sequence.set)){
+  Golgi.testing.set = rbind(Golgi.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Golgi.testing.sequence.set[[i]]))
+}
+
+Mito.Plastid.testing.set = data.frame()
+for(i in 1:length(Mito.Plastid.testing.sequence.set)){
+  Mito.Plastid.testing.set = rbind(Mito.Plastid.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Mito.Plastid.testing.sequence.set[[i]]))
+}
+
+Mito.testing.set = data.frame()
+for(i in 1:length(Mito.testing.sequence.set)){
+  Mito.testing.set = rbind(Mito.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Mito.testing.sequence.set[[i]]))
+}
+
+Multi.SubCellClass.testing.set = data.frame()
+for(i in 1:length(Multi.SubCellClass.testing.sequence.set)){
+  Multi.SubCellClass.testing.set = rbind(Multi.SubCellClass.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Multi.SubCellClass.testing.sequence.set[[i]]))
+}
+
+Nucl.testing.set = data.frame()
+for(i in 1:length(Nucl.testing.sequence.set)){
+  Nucl.testing.set = rbind(Nucl.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Nucl.testing.sequence.set[[i]]))
+}
+
+Other.Dual.testing.set = data.frame()
+for(i in 1:length(Other.Dual.testing.sequence.set)){
+  Other.Dual.testing.set = rbind(Other.Dual.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Other.Dual.testing.sequence.set[[i]]))
+}
+
+Peroxi.testing.set = data.frame()
+for(i in 1:length(Peroxi.testing.sequence.set)){
+  Peroxi.testing.set = rbind(Peroxi.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Peroxi.testing.sequence.set[[i]]))
+}
+
+Plastid.testing.set = data.frame()
+for(i in 1:length(Plastid.testing.sequence.set)){
+  Plastid.testing.set = rbind(Plastid.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Plastid.testing.sequence.set[[i]]))
+}
+
+Vacu.testing.set = data.frame()
+for(i in 1:length(Vacu.testing.sequence.set)){
+  Vacu.testing.set = rbind(Vacu.testing.set, SequenceToPseAACCTDCCTDTQSOmoreauNCC(Vacu.testing.sequence.set[[i]]))
+}
+
+
+
+
+cost.array = c(1,5,10,20,50,100,200,500,1000,2000)
+gamma.array = c(10)
+results = c()
+
+for(i in 1:length(cost.array)){
+  svm.model = svm(Class.labels ~., Training.set, cost = cost.array[i], gamma = 10,type = 'C', scale = FALSE)
+  Celmemb.prediction = predict(svm.model, Celmemb.testing.set)
+  Celwall.prediction = predict(svm.model, Celwall.testing.set)
+  Cyto.Golgi.prediction = predict(svm.model, Cyto.Golgi.testing.set)
+  Cyto.Nucl.prediction = predict(svm.model, Cyto.Nucl.testing.set)
+  Cyto.prediction = predict(svm.model, Cyto.testing.set)
+  Endoplasm.prediction = predict(svm.model, Endoplasm.testing.set)
+  Extracel.prediction = predict(svm.model, Extracel.testing.set)
+  Golgi.prediction = predict(svm.model, Golgi.testing.set)
+  Mito.Plastid.prediction = predict(svm.model, Mito.Plastid.testing.set)
+  Mito.prediction = predict(svm.model, Mito.testing.set)
+  Multi.SubCellClass.prediction = predict(svm.model, Multi.SubCellClass.testing.set)
+  Nucl.prediction = predict(svm.model, Nucl.testing.set)
+  Other.Dual.prediction = predict(svm.model, Other.Dual.testing.set)
+  Peroxi.prediction = predict(svm.model, Peroxi.testing.set)
+  Plastid.prediction = predict(svm.model, Plastid.testing.set)
+  Vacu.prediction = predict(svm.model, Vacu.testing.set)
+  
+  predicted = 0
+  total = 0
+  predicted = predicted + sum(Celmemb.prediction == "Celmemb")
+  predicted = predicted + sum(Celwall.prediction == "Celwall")
+  predicted = predicted + sum(Cyto.Golgi.prediction == "Cyto.Golgi")
+  predicted = predicted + sum(Cyto.Nucl.prediction == "Cyto.Nucl")
+  predicted = predicted + sum(Cyto.prediction == "Cyto")
+  predicted = predicted + sum(Endoplasm.prediction == "Endoplasm")
+  predicted = predicted + sum(Extracel.prediction == "Extracel")
+  predicted = predicted + sum(Golgi.prediction == "Golgi")
+  predicted = predicted + sum(Mito.Plastid.prediction == "Mito.Plastid")
+  predicted = predicted + sum(Mito.prediction == "Mito")
+  predicted = predicted + sum(Multi.SubCellClass.prediction == "Multi.SubCellClass")
+  predicted = predicted + sum(Nucl.prediction == "Nucl")
+  predicted = predicted + sum(Other.Dual.prediction == "Other.Dual")
+  predicted = predicted + sum(Peroxi.prediction == "Peroxi")
+  predicted = predicted + sum(Plastid.prediction == "Plastid")
+  predicted = predicted + sum(Vacu.prediction == "Vacu")
+  
+  total = length(Celmemb.prediction)+length(Celwall.prediction)+length(Cyto.Golgi.prediction)+
+    length(Cyto.Nucl.prediction)+length(Cyto.prediction)+length(Endoplasm.prediction)+length(Extracel.prediction)+
+    length(Golgi.prediction)+length(Mito.Plastid.prediction)+length(Mito.Plastid.prediction)+length(Multi.SubCellClass.prediction)+
+    length(Nucl.prediction)+length(Other.Dual.prediction)+length(Peroxi.prediction)+length(Plastid.prediction)+
+    length(Vacu.prediction)
+  
+  accuracy = predicted/total
+  results = c(results, paste("Cost ",cost.array[i]," , Gamma ", 10," , Accuracy ",accuracy, sep=""))
+  
+  
+}
+
+results
+

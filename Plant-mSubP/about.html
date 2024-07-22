@@ -1,0 +1,54 @@
+<style>
+div.panel{
+  margin-right: 10%;
+  margin-left: 10%;
+  background-color: #EEEFF1;
+}
+
+div.ex1 {
+    font-size: medium;
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+h3.ex1{
+  text-align: center;
+  background-color: #D3D3D3;
+  color:gray;
+  
+}
+
+</style>
+
+<div class="panel">
+
+<h3 class="ex1">About</h3>
+
+<div class="ex1">Identification of the subcellular location of protein has been an area of interest in protein science. It has been extensively studied in past few decades in a computational paradigm. However, most of the methods are focused on single location prediction.&#10;
+The proposed approach successfully predicts 11 single locations (cell membrane, cell wall, plastid, cytoplasm, endoplasmic reticulum, extracellular, golgi apparatus, mitochondrion, nucleus, peroxisome and vacuole) and three significant multi location proteins (cytoplasm-nucleus, mitochondrion-plastid and cytoplasm-golgi apparatus).&#10;
+Various sequence derived features based on composition and physicochemical properties such as amino acid composition, pseudo amino acid composition, dipeptide composition and hybrid of these are used to represent the protein.&#10;
+Here a brief description of the sequences features used by the application.
+<strong>(AAC)</strong>: Amino Acid Composition based, it is a 20-vector descriptor with the percentages of each of the aminoacid in the total sequence.
+<strong>(Dipep)</strong>: Dipeptide Composition based, it is a 400-vector descriptor with the percentages of each pair of subsequent aminoacids in the total sequence.
+<strong>(PseAAC)</strong>: Pseudo Amino Acid Composition based, it is a 30-vector descriptor with the information of AAC plus 10 more descriptors based on hydropholicity and hydrophilicity values of the aminoacids present.
+<strong>(NCC)</strong>: N-Center-C terminal Composition based, it is a 60-vector descriptor with the AAC information of each of the three subsequences of the total lenght sequence. N is a subsequence of the 25 first aminoacids, C-terminal is a subsequence of the 25 last aminoacids and C-Center is the rest of the aminoacids.
+<strong>(CTDC)</strong>: Composition according of the hydrophobicity, normalized van der Waals volume, polarity, and polarizability attributes. 21-vector descriptor.(protr R package)
+<strong>(CTDT)</strong>: Transition according of the hydrophobicity, normalized van der Waals volume, polarity, and polarizability attributes. 21-vector descriptor.(protr R package)
+<strong>(QSO)</strong>: Quasi Order Descriptor, normalized occurence for aminoacids. 100-vector descriptor(protr R package)
+<strong>(PseAACNCCDipep)</strong>: Hybrid of Pseudo AAC, N-Center-C terminal (3-parts) and Dipeptide Composition based. 490-vector descriptor.
+<strong>(NCCDipepCTDCCTDTQSO)</strong>: Hybrid N-Center-C terminal (3-parts), Dipeptide Composition, Composition and Transition (Dubchack) and Quasi Order Descriptor based. 602-vector descriptor.
+
+
+</div>
+
+
+<h3 class="ex1">Author</h3>
+
+<div class="ex1">This application use R protr package<a href="https://cran.r-project.org/web/packages/protr/vignettes/protr.html#quasi-sequence-order-descriptors-1">(Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. Bioinformatics 31 (11), 1857-1859.)</a> for extract CTDC, CTDT, QSO and Dipep features. 
+Support vector machine process uses e1071 R package.&#10;
+
+It was built by Cristian Loaiza, Graduate Student of Plant, Soils and Climate Departament in Utah State University.The backend is based on scripts developed in matlab by former Postdoc Sitanshu Sekhar Sahu under Dr Rakesh Kaundal supervision. 
+</div>
+
+</div>
+

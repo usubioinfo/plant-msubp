@@ -1,0 +1,45 @@
+<style>
+p.ex1 {
+    margin-right:  30%;
+    font-size: medium;
+}
+
+div.panel{
+  margin-right: 10%;
+  margin-left: 10%;
+  background-color: #EEEFF1;
+}
+
+div.ex1 {
+    font-size: medium;
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+h3.ex1{
+  text-align: center;
+  background-color: #D3D3D3;
+  color:gray;
+}
+
+  
+
+</style>
+
+<div class="panel">
+  
+<h3 class="ex1">Help</h3>
+
+<div class="ex1">You can either upload a multifasta file or paste your sequence(s) in the box, after that, you must select which kind of prediction method do you want to use and then click Submit button. When the result is ready you can download a file with that information to be open in a Spreadsheet (e.g: Excel) and also you can clear the result to Submit a new set of sequences.&#10;
+<strong>Minimum amioacid number required per sequence</strong> &#10;
+Sequences must have a length higher than 50 aminoacids, that is because some feature representation need at least that length number to calculate their values.&#10;
+<strong>Sequence number threshold</strong> &#10;
+It is up to a 1000 sequences, this is a threshold that could change after users feedback. Because depending of the prediction strategy used the time could vary substantially, for example, AAC support vector machine aproach is the faster one, compared to one of the hybrids or even the blast strategy that are much slower and consuming for computational resources, based on that this 1000 sequences threshold will change. &#10;
+<strong>Where are the sequences used to train the SVM model from</strong>&#10;
+In the dataset Tab, you could find a table in which you have access to the query performed in UniProtKB database and also the number of sequences per model and a link to download the training set and the indepent test set.&#10;
+<strong>Problems/Suggestion about Plant-mSubP</strong>&#10;
+If you can't get something to work or you want to suggest something that make this application works better, please send an email to crissloaiza@gmail.com.
+
+</div>
+
+</div>

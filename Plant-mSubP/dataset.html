@@ -1,0 +1,205 @@
+<style>
+div.panel{
+  margin-right: 10%;
+  margin-left: 10%;
+  background-color: #EEEFF1;
+}
+
+div.ex1 {
+    font-size: medium;
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+h3.ex1{
+  text-align: center;
+  background-color: #D3D3D3;
+  color:gray;
+}
+
+
+</style>
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+
+<div class="panel">
+  
+<h3 class="ex1" >Dataset</h3>
+
+<div class="ex1">The protein sequences belonging to all plants were downloaded fromthe UniProt database( release 2013_02)(http://www.uniprot.org ) by searching[ keywords: SUBCELLULAR LOCATION AND reviewed: yes ]. Sequences whose annotations were marked as ‘PROBABLE’, ‘POSSIBLE’, and ‘BY SIMILARITY’ were discarded. 
+
+We ended up with 16494 sequences of proteins, annotated to 14 different single and multi-label subcellular localizations as detailed bellow. 
+
+However, the sequence number drastically reduced to 6892 after we put a sequence identity cutoff of 30% (Table 1) on each of them using BlastClust.To avoid homology bias in machine learning, a 25 or 30% sequence identity cutoff threshold is needed to guarantee that none of the proteins included in the benchmark datasets has greater than this threshold identity to any other sequences in the dataset. This was done within class as well as across the classes. 
+
+Further, about 10% of the data was kept aside for later independent testing of the models. Testing on independent datasets that are not used in a machine learning process has been reported to be the best benchmark to test the performance of various prediction modes. Further, we discarded the fragment proteins those have less than 50 amino acids. Finally, we got 5879 protein sequences for training and 629 sequences for independent test.
+
+</div>
+
+<br>
+<br>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-j2ac{font-weight:bold;font-size:medium;vertical-align:top}
+.tg .tg-9hbo{font-weight:bold;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-j2ac">Type</th>
+    <th class="tg-j2ac">Subcellular location</th>
+    <th class="tg-j2ac"># sequences retrieved</th>
+    <th class="tg-j2ac"># sequences after redundancy check (40% cut-off)</th>
+    <th class="tg-j2ac">Training dataset</th>
+    <th class="tg-j2ac">Training dataset filtered</th>
+    <th class="tg-j2ac">Independent dataset</th>
+  </tr>
+  <tr>
+    <td class="tg-9hbo">Single   Label</td>
+    <td class="tg-9hbo">Plastid</td>
+    <td class="tg-yw4l">11302</td>
+    <td class="tg-yw4l">2979</td>
+    <td class="tg-yw4l">2678</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Plastid_train_filter.fasta" target="_blank">2468</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Plastid_Inde.fasta" target="_blank">248</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Cytoplasm</td>
+    <td class="tg-yw4l">739</td>
+    <td class="tg-yw4l">403</td>
+    <td class="tg-yw4l">361</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Cyto_train_filter.fasta" target="_blank">351</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Cyto_Inde.fasta" target="_blank">40</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Extracellular</td>
+    <td class="tg-yw4l">237</td>
+    <td class="tg-yw4l">186</td>
+    <td class="tg-yw4l">166</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Extracel_train_filter.fasta" target="_blank">140</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Extracel_Inde.fasta" target="_blank">14</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Nucleus</td>
+    <td class="tg-yw4l">734</td>
+    <td class="tg-yw4l">636</td>
+    <td class="tg-yw4l">571</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Nucl_train_filter.fasta" target="_blank">568</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Nucl_Inde.fasta" target="_blank">63</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Mitochondrion</td>
+    <td class="tg-yw4l">759</td>
+    <td class="tg-yw4l">537</td>
+    <td class="tg-yw4l">481</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Mito_train_filter.fasta" target="_blank">447</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Mito_Inde.fasta" target="_blank">52</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Cell Membrane</td>
+    <td class="tg-yw4l">1256</td>
+    <td class="tg-yw4l">927</td>
+    <td class="tg-yw4l">830</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Celmemb_train_filter.fasta" target="_blank">829</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Celmemb_Inde.fasta" target="_blank">92</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Golgi Apparatus</td>
+    <td class="tg-yw4l">277</td>
+    <td class="tg-yw4l">229</td>
+    <td class="tg-yw4l">204</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Golgi_train_filter.fasta" target="_blank">204</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Golgi_Inde.fasta" target="_blank">23</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Endoplasmic Reticulum</td>
+    <td class="tg-yw4l">393</td>
+    <td class="tg-yw4l">320</td>
+    <td class="tg-yw4l">285</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Endoplasm_train_filter.fasta" target="_blank">280</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Endoplasm_Inde.fasta" target="_blank">29</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Vacuole</td>
+    <td class="tg-yw4l">260</td>
+    <td class="tg-yw4l">198</td>
+    <td class="tg-yw4l">176</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Vacu_train_filter.fasta" target="_blank">176</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Vacu_Inde.fasta" target="_blank">20</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Peroxisome</td>
+    <td class="tg-yw4l">80</td>
+    <td class="tg-yw4l">63</td>
+    <td class="tg-yw4l">57</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Peroxi_train_filter.fasta" target="_blank">57</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Peroxi_Inde.fasta" target="_blank">6</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Cell Wall</td>
+    <td class="tg-yw4l">52</td>
+    <td class="tg-yw4l">47</td>
+    <td class="tg-yw4l">42</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Celwall_train_filter.fasta" target="_blank">37</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Celwall_Inde.fasta" target="_blank">5</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo">Dual Label</td>
+    <td class="tg-9hbo">Mito-Plastid</td>
+    <td class="tg-yw4l">141</td>
+    <td class="tg-yw4l">133</td>
+    <td class="tg-yw4l">118</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Mito_Plastid_train_filter.fasta" target="_blank">118</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Mito_Plastid_Inde.fasta" target="_blank">13</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Cyto-Nucleus</td>
+    <td class="tg-yw4l">210</td>
+    <td class="tg-yw4l">196</td>
+    <td class="tg-yw4l">175</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Cyto_Nucl_train_filter.fasta" target="_blank">170</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Cyto_Nucl_Inde.fasta" target="_blank">20</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Cyto-Golgi</td>
+    <td class="tg-yw4l">54</td>
+    <td class="tg-yw4l">38</td>
+    <td class="tg-yw4l">34</td>
+    <td class="tg-yw4l"><a href="./training/sequences/Cyto_Golgi_train_filter.fasta" target="_blank">34</a></td>
+    <td class="tg-yw4l"><a href="./testing/sequences/Cyto_Golgi_Inde.fasta" target="_blank">4</a></td>
+  </tr>
+  <tr>
+    <td class="tg-9hbo"></td>
+    <td class="tg-9hbo">Total</td>
+    <td class="tg-yw4l">16494</td>
+    <td class="tg-yw4l">6892</td>
+    <td class="tg-yw4l">6178</td>
+    <td class="tg-yw4l">5879</td>
+    <td class="tg-yw4l">629</td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+</div>

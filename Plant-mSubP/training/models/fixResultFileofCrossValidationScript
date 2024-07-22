@@ -1,0 +1,13 @@
+
+
+find . -size 0 -print0 | xargs -0 rm
+sed -i 's/Sensitivity/SubCell Sensitivity/g' *.txt
+sed -i 's/^\s*//g' *.txt
+sed -i 's/Error Rate/Error_Rate/g;s/Matthews Correlation Coeficient/Matthews_Correlation_Coeficient/g;s/Rate False Prediction/Rate_False_Prediction/g' *.txt
+ls *txt | parallel --gnu -j1 'split -l15 {} {.} '
+ls *txt | parallel --gnu -j1 'paste -d " " {.}aa {.}ab > {.}_fix.txt '
+rm *aa
+rm *ab
+rm *tion.txt
+sed -i 's/  / /g;s/  / /g;s/  / /g;s/  / /g;s/  / /g' *_fix.txt
+sed -i 's/Accuracy/Accuracy Repeat/g' *_fix.txt
