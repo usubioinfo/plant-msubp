@@ -5,6 +5,12 @@ library(shinyjs)
 library(stringr)
 
 blast.database <- Sys.getenv("PLANT_MSUBP_BLAST_DB", "blast_db/subcellular_localization_db")
+blast.info.file <- file.path(dirname(blast.database), "database-info.txt")
+blast.description <- if (file.exists(blast.info.file)) {
+  paste(readLines(blast.info.file, warn = FALSE), collapse = " ")
+} else {
+  "The configured protein reference database supplies the localization annotations shown below."
+}
 access.log <- Sys.getenv("PLANT_MSUBP_ACCESS_LOG")
 if (nzchar(access.log)) {
   dir.create(dirname(access.log), recursive = TRUE, showWarnings = FALSE)
@@ -512,7 +518,7 @@ server <- function(input, output, session) {
       tagList(
         HTML("Your blastp prediction results are as under:"),
         HTML("<br>"),
-        HTML("The current target database contains 217,967 protein sequences those having 'SUBCELLULAR LOCALIZATION' information available in the Swiss-Prot database (release 56.4 as of December, 2008). The default E-value is set at 0.001"),
+        tags$p(blast.description, "The E-value cutoff is 0.001. Reference-hit annotations may include multiple locations or uncertainty qualifiers."),
         HTML("<br>"),
         HTML("<br>"),
         HTML(paste("     <strong>Number of sequences processed : </strong>",good.sequences.number$sequences.number)),

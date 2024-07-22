@@ -94,6 +94,16 @@ To use the existing database, set `PLANT_MSUBP_BLAST_DB_DIR` to its directory be
 
 ## Verification
 
+To build the reference from a downloaded Swiss-Prot annotated text file:
+
+```bash
+docker build --platform linux/amd64 -t plant-msubp:current .
+bash scripts/build-swissprot-db.sh swissprot/uniprot_sprot.dat.gz 2026_03 blast_db
+PLANT_MSUBP_BLAST_DB_DIR="$(pwd)/blast_db" ./build-docker.sh
+```
+
+The builder requires Python 3 and Docker. It streams the gzip file without extracting the full annotated text to disk. It includes reviewed entries with a subcellular-location comment, retains their full annotations and evidence qualifiers, and writes release/count metadata plus a source checksum. Generated data are excluded from Git and Docker image builds. This creates a current reference across all organisms; it does not recreate the historical 2008 database or retrain the four SVM models.
+
 With the service running, check its routes and dataset downloads:
 
 ```bash

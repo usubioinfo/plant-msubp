@@ -7,3 +7,7 @@
 **/.~lock.*
 Plant-mSubP/tmp
 tests
+blast_db
+swissprot
+sources
+**/__pycache__

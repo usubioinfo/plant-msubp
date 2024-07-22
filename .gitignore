@@ -14,3 +14,8 @@ Plant-mSubP/google-analytics.js
 .DS_Store
 *.swp
 .~lock.*
+
+# Downloaded references and generated BLAST indexes
+blast_db/
+swissprot/
+__pycache__/
