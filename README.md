@@ -27,7 +27,7 @@ Build and run the service:
 ./build-docker.sh
 ```
 
-Open `http://localhost:3838/Plant-mSubP/` after the build completes. Rebuild the image to apply the routing change; restarting an older image is insufficient.
+Open `http://localhost:3838/Plant-mSubP/` after the build completes, or use `http://VM_IP:3838/Plant-mSubP/` when connecting to a VM with port 3838 published and allowed by its firewall.
 
 This will:
 
